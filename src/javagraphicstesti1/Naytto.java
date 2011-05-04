@@ -23,7 +23,6 @@ public class Naytto extends JPanel {
         UI ui = new UI();
     }
 
-    //TODO: lisää itse siirtomekanismi
     void siirra(int x, int y) {
 
         if (this.x <= 0 || this.y <= 0 || this.x >= this.getWidth() || this.y >= this.getHeight()) {
@@ -45,7 +44,6 @@ public class Naytto extends JPanel {
         g.fillOval(x, y, ovalWidth, ovalHeight);
     }
 
-    //TODO: Toteuta uusipaikka toiminnallisuus
     void uusiPaikka(int x, int y) {
         this.x = x;
         this.y = y;
@@ -53,12 +51,12 @@ public class Naytto extends JPanel {
     }
 
     public void kasvataPintaAlaa() {
-        if (ovalHeight <= this.getHeight()-2 && ovalWidth <= this.getWidth()-2) {
-            ovalWidth  += 1;
+        if (ovalHeight <= this.getHeight() - 2 && ovalWidth <= this.getWidth() - 2) {
+            ovalWidth += 1;
             ovalHeight += 1;
         } else {
-            ovalWidth  = this.getWidth()-1;
-            ovalHeight = this.getHeight()-1;
+            ovalWidth = this.getWidth() - 1;
+            ovalHeight = this.getHeight() - 1;
         }
         repaint();
     }

@@ -23,44 +23,43 @@ public class UI extends JFrame {
         naytto.addMouseListener(new HiiriKuuntelija());
         addKeyListener(new LiikeTunnistin());
 
-        setLocation(((int)Toolkit.getDefaultToolkit().getScreenSize().width/2),((int)Toolkit.getDefaultToolkit().getScreenSize().height/2));
+        setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2), ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
         //Keskitetään paneeli
         add(naytto, BorderLayout.CENTER);
         //pakataan haluttuun kokoon näyttö
         pack();
-        
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-    
-//TODO: Lisää liikkumismahdollisuus
     private class LiikeTunnistin extends KeyAdapter {
 
-       
-        
         @Override
         public void keyPressed(KeyEvent ke) {
             int keyCode = ke.getKeyCode();
             if (keyCode == KeyEvent.VK_UP) {
+                naytto.siirra(0, 3);
             } else if (keyCode == KeyEvent.VK_DOWN) {
+                naytto.siirra(0, -3);
             } else if (keyCode == KeyEvent.VK_ENTER) {
                 if (saie == null) {
                     try {
                         saie = new PalloSaie(naytto);
                         saie.start();
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                 }
             } else if (keyCode == KeyEvent.VK_RIGHT) {
-                naytto.kasvataPintaAlaa();
+                naytto.siirra(3, 0);
             } else if (keyCode == KeyEvent.VK_LEFT) {
-                naytto.pienennnaPintaAlaa();
+                naytto.siirra(-3, 0);
             }
 
         }
     }
 
-    private class HiiriKuuntelija extends MouseAdapter{
+    private class HiiriKuuntelija extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -75,6 +74,5 @@ public class UI extends JFrame {
         public void mouseMoved(MouseEvent e) {
             naytto.uusiPaikka(e.getX(), e.getY());
         }
-        
     }
 }
