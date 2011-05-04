@@ -42,6 +42,10 @@ public class UI extends JFrame {
                 naytto.siirra(0, -3);
             } else if (keyCode == KeyEvent.VK_DOWN) {
                 naytto.siirra(0, 3);
+            }else if (keyCode == KeyEvent.VK_RIGHT) {
+                naytto.siirra(3, 0);
+            } else if (keyCode == KeyEvent.VK_LEFT) {
+                naytto.siirra(-3, 0);
             } else if (keyCode == KeyEvent.VK_ENTER) {
                 if (saie == null) {
                     try {
@@ -50,11 +54,7 @@ public class UI extends JFrame {
                     } catch (Exception e) {
                     }
                 }
-            } else if (keyCode == KeyEvent.VK_RIGHT) {
-                naytto.siirra(3, 0);
-            } else if (keyCode == KeyEvent.VK_LEFT) {
-                naytto.siirra(-3, 0);
-            }
+            } 
 
         }
     }
