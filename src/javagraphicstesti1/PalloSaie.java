@@ -20,12 +20,18 @@ public class PalloSaie extends Thread {
     @Override
     public void run() {
         while (kaynnissa) {
-            if (Math.random() < 0.5) {
-                naytto.siirra(1, 0);
-            } else {
-                naytto.siirra(-1, 0);
+            for (int i = 0; i < naytto.getHeight()-30 + 1; i++) {
+                try {
+                    Thread.sleep(3);
+                } catch (InterruptedException e) {}
+                naytto.siirraPalikoita(i, i);
             }
-
+            for (int i = naytto.getHeight(); i > 0; i--) {
+                  try {
+                    Thread.sleep(3);
+                } catch (InterruptedException e) {}
+                naytto.siirraPalikoita(i, i);
+            }
 //            try {
 //                sleep(2);
 //            } catch (InterruptedException e) {

@@ -51,11 +51,9 @@ public class UI extends JFrame {
                     try {
                         saie = new PalloSaie(naytto);
                         saie.start();
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) {}
                 }
             } 
-
         }
     }
 
