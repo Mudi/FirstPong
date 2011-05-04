@@ -39,9 +39,9 @@ public class UI extends JFrame {
         public void keyPressed(KeyEvent ke) {
             int keyCode = ke.getKeyCode();
             if (keyCode == KeyEvent.VK_UP) {
-                naytto.siirra(0, 3);
-            } else if (keyCode == KeyEvent.VK_DOWN) {
                 naytto.siirra(0, -3);
+            } else if (keyCode == KeyEvent.VK_DOWN) {
+                naytto.siirra(0, 3);
             } else if (keyCode == KeyEvent.VK_ENTER) {
                 if (saie == null) {
                     try {
