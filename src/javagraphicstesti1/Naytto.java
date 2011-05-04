@@ -54,7 +54,6 @@ public class Naytto extends JPanel {
         setDoubleBuffered(true);
         g.setColor(Color.BLUE);
         g.fillRect(30, vasenPalikkaY, 15, 30);
-
         //oikeain puoleinen palikka joka on aina oikeasta reunasta 30 pixeliä
         g.fillRect((getWidth() - ((15) + 30)), oikeaPalikkaY, 15, 30);
         g.fillOval(x, y, ovalWidth, ovalHeight);

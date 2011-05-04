@@ -23,7 +23,9 @@ public class UI extends JFrame {
         
         addKeyListener(new LiikeTunnistin());
         //Asetetaan ohjelma keskelle näyttöä käynnistettäessä
-        setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2), ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
+        setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2), 
+                   ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
+        
         //Keskitetään paneeli
         add(naytto, BorderLayout.CENTER);
         //pakataan haluttuun kokoon näyttö
