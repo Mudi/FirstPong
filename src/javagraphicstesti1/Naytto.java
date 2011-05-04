@@ -17,6 +17,8 @@ public class Naytto extends JPanel {
         setPreferredSize(new Dimension(400, 200));
         x = 200;
         y = 100;
+        oikeaPalikkaY = 30;
+        vasenPalikkaY = 30;
         ovalWidth = 20;
         ovalHeight = 20;
     }
@@ -32,9 +34,9 @@ public class Naytto extends JPanel {
             this.y = (int) this.getHeight() / 2;
         } //Tarkistetaan osuuko pelaaja oikean puoleiseen "mailaan"
         //TODO: pallon täytyy kimmota oikeaan suuntaan
-        else if (this.x >= this.getWidth() - 45&& (this.y <=oikeaPalikkaY && this.y>=oikeaPalikkaY-30)) {
-                this.x = (int) this.getWidth() / 2;
-                this.y = (int) this.getHeight() / 2;
+        else if ((this.x >= this.getWidth() - 66)&& this.y+10 >= oikeaPalikkaY-15 && this.y-10 <= oikeaPalikkaY+22) {
+                    this.x = (int) this.getWidth() / 2;
+                    this.y = (int) this.getHeight() / 2;
         } else {
             this.x += x;
             this.y += y;
