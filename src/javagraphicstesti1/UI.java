@@ -19,10 +19,10 @@ public class UI extends JFrame {
 
     public UI() {
         naytto = new Naytto();
-
         naytto.addMouseListener(new HiiriKuuntelija());
+        
         addKeyListener(new LiikeTunnistin());
-
+        //Asetetaan ohjelma keskelle näyttöä käynnistettäessä
         setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2), ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
         //Keskitetään paneeli
         add(naytto, BorderLayout.CENTER);
