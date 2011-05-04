@@ -23,6 +23,7 @@ public class UI extends JFrame {
         naytto.addMouseListener(new HiiriKuuntelija());
         addKeyListener(new LiikeTunnistin());
 
+        setLocation(((int)Toolkit.getDefaultToolkit().getScreenSize().width/2),((int)Toolkit.getDefaultToolkit().getScreenSize().height/2));
         //Keskitetään paneeli
         add(naytto, BorderLayout.CENTER);
         //pakataan haluttuun kokoon näyttö
