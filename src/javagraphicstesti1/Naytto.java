@@ -30,10 +30,9 @@ public class Naytto extends JPanel {
         if (this.x <= 0 || this.y <= 0 || this.x >= this.getWidth() || this.y >= this.getHeight()) {
             this.x = (int) this.getWidth() / 2;
             this.y = (int) this.getHeight() / 2;
-        }
-        //Tarkistetaan osuuko pelaaja oikean puoleiseen "mailaan"
-                //TODO: pallon täytyy kimmota oikeaan suuntaan
-        else if ((this.x + 5) >= ((getWidth() - ((15) + 30))) && (this.y <= oikeaPalikkaY && this.y >= (oikeaPalikkaY + 30))) {
+        } //Tarkistetaan osuuko pelaaja oikean puoleiseen "mailaan"
+        //TODO: pallon täytyy kimmota oikeaan suuntaan
+        else if (this.x >= this.getWidth() - 45&& (this.y <=oikeaPalikkaY && this.y>=oikeaPalikkaY-30)) {
                 this.x = (int) this.getWidth() / 2;
                 this.y = (int) this.getHeight() / 2;
         } else {
