@@ -9,6 +9,8 @@ public class Naytto extends JPanel {
     private int y;
     private int ovalWidth;
     private int ovalHeight;
+    private int vasenPalikkaY;
+    private int oikeaPalikkaY;
 
     //konstruktori jossa annetaan haluttu koko pack(); metodille
     public Naytto() {
@@ -41,6 +43,8 @@ public class Naytto extends JPanel {
         super.paintComponent(g);
         setDoubleBuffered(true);
         g.setColor(Color.BLUE);
+        g.fillRect(30, vasenPalikkaY, 15, 30);
+        g.fillRect((getWidth()-((15)+30)), oikeaPalikkaY, 15, 30);
         g.fillOval(x, y, ovalWidth, ovalHeight);
     }
 
@@ -49,6 +53,7 @@ public class Naytto extends JPanel {
         this.y = y;
         repaint();
     }
+    
 
     public void kasvataPintaAlaa() {
         if (ovalHeight <= this.getHeight() - 2 && ovalWidth <= this.getWidth() - 2) {
