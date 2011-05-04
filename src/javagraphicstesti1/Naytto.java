@@ -65,7 +65,7 @@ public class Naytto extends JPanel {
         }
         repaint();
     }
-
+//Testilisäys
     public void pienennnaPintaAlaa() {
         if (ovalHeight >= 2 && ovalWidth >= 2) {
             ovalWidth -= 1;
