@@ -15,7 +15,8 @@ import java.awt.event.*;
 public class UI extends JFrame {
 
     private Naytto naytto;
-    private PalikkaSaie saie = null;
+    private PalikkaSaie palikkasaie = null;
+    private PalloSaie pallosaie = null;
 
     public UI() {
         naytto = new Naytto();
@@ -50,17 +51,22 @@ public class UI extends JFrame {
                 naytto.siirra(-3, 0);
             }
                     
-             //Käynnistetään/lopetetaan saie, tilasta riippuen
+             //Käynnistetään/lopetetaan palikkasaie, tilasta riippuen
             else if (keyCode == KeyEvent.VK_ENTER) {
-                if (saie == null) {
+                if (palikkasaie == null && palikkasaie == null  ) {
                     try {
-                        saie = new PalikkaSaie(naytto);
-                        saie.start();
+                        palikkasaie = new PalikkaSaie(naytto);
+                        pallosaie = new PalloSaie(naytto);
+                        
+                        palikkasaie.start();
+                        pallosaie.start();
                     } catch (Exception e) {
                     }
-                } else if (saie != null) {
-                    saie.lopeta();
-                    saie = null;
+                } else if (palikkasaie != null && palikkasaie != null) {
+                    palikkasaie.lopeta();
+                    pallosaie.lopeta();
+                    palikkasaie = null;
+                    pallosaie = null;
                 }
             }
             

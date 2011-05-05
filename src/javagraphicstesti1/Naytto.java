@@ -11,6 +11,9 @@ public class Naytto extends JPanel {
     private int ovalHeight;
     private int vasenPalikkaY;
     private int oikeaPalikkaY;
+    private boolean tormannyt;
+
+
 
     //konstruktori jossa annetaan haluttu koko pack(); metodille
     public Naytto() {
@@ -21,6 +24,7 @@ public class Naytto extends JPanel {
         vasenPalikkaY = 30;
         ovalWidth = 20;
         ovalHeight = 20;
+        tormannyt = false;
     }
 
     public static void main(String[] args) {
@@ -33,17 +37,20 @@ public class Naytto extends JPanel {
         if (this.x <= 0 || this.y <= 0 || this.x >= this.getWidth() || this.y >= this.getHeight()) {
             this.x = (int) this.getWidth() / 2;
             this.y = (int) this.getHeight() / 2;
+            setTormannyt();
             return false;
         } //Tarkistetaan osuuko pelaaja oikean puoleiseen "mailaan"
         //TODO: pallon täytyy kimmota oikeaan suuntaan
         else if ((this.x >= this.getWidth() - 66) && this.y + 10 >= oikeaPalikkaY - 15 && this.y - 10 <= oikeaPalikkaY + 22) {
-            this.x = (int) this.getWidth() / 2;
-            this.y = (int) this.getHeight() / 2;
+//            this.x = (int) this.getWidth() / 2;
+//            this.y = (int) this.getHeight() / 2;
+            setTormannyt();
             return false;
 
         } else if ((this.x <= 45) && this.y + 10 >= vasenPalikkaY - 12 && this.y - 10 <= vasenPalikkaY + 20) {
-            this.x = (int) this.getWidth() / 2;
-            this.y = (int) this.getHeight() / 2;
+//            this.x = (int) this.getWidth() / 2;
+//            this.y = (int) this.getHeight() / 2;
+            setTormannyt();
             return false;
         }
         return true;
@@ -78,6 +85,16 @@ public class Naytto extends JPanel {
         repaint();
     }
 
+    //Toggle tormannyt
+    public void setTormannyt() {
+        if(tormannyt){
+         tormannyt = false;
+        }
+        else{
+            tormannyt = true;
+        }
+    }
+
 //    public void kasvataPintaAlaa() {
 //        if (ovalHeight <= this.getHeight() - 2 && ovalWidth <= this.getWidth() - 2) {
 //            ovalWidth += 1;
@@ -102,12 +119,14 @@ public class Naytto extends JPanel {
 //    }
 
     public void siirraPalikoita(int vasenY, int oikeaY) {
-           if (tarkistaRajat()) {
-               
+           if (tarkistaRajat()) {   
         }
-  
         oikeaPalikkaY = oikeaY;
         vasenPalikkaY = vasenY;
         repaint();
+    }
+    
+        public boolean isTormannyt() {
+        return tormannyt;
     }
 }
