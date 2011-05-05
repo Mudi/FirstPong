@@ -27,20 +27,29 @@ public class Naytto extends JPanel {
         UI ui = new UI();
     }
 
-    void siirra(int x, int y) {
+    public boolean tarkistaRajat() {
         //Seinien tarkastus
         if (this.x <= 0 || this.y <= 0 || this.x >= this.getWidth() || this.y >= this.getHeight()) {
             this.x = (int) this.getWidth() / 2;
             this.y = (int) this.getHeight() / 2;
+            return false;
         } //Tarkistetaan osuuko pelaaja oikean puoleiseen "mailaan"
         //TODO: pallon täytyy kimmota oikeaan suuntaan
         else if ((this.x >= this.getWidth() - 66) && this.y + 10 >= oikeaPalikkaY - 15 && this.y - 10 <= oikeaPalikkaY + 22) {
             this.x = (int) this.getWidth() / 2;
             this.y = (int) this.getHeight() / 2;
+            return false;
+
         } else if ((this.x <= 45) && this.y + 10 >= vasenPalikkaY - 12 && this.y - 10 <= vasenPalikkaY + 20) {
             this.x = (int) this.getWidth() / 2;
             this.y = (int) this.getHeight() / 2;
-        } else {
+            return false;
+        }
+        return true;
+    }
+
+    void siirra(int x, int y) {
+       if (tarkistaRajat()) {
             this.x += x;
             this.y += y;
         }
@@ -52,6 +61,7 @@ public class Naytto extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         setDoubleBuffered(true);
+
         g.setColor(Color.BLUE);
         g.fillRect(30, vasenPalikkaY, 15, 30);
         //oikeain puoleinen palikka joka on aina oikeasta reunasta 30 pixeliä
@@ -60,35 +70,41 @@ public class Naytto extends JPanel {
     }
 
     void uusiPaikka(int x, int y) {
-        this.x = x;
-        this.y = y;
-        repaint();
-    }
-
-    public void kasvataPintaAlaa() {
-        if (ovalHeight <= this.getHeight() - 2 && ovalWidth <= this.getWidth() - 2) {
-            ovalWidth += 1;
-            ovalHeight += 1;
-        } else {
-            ovalWidth = this.getWidth() - 1;
-            ovalHeight = this.getHeight() - 1;
+      if (tarkistaRajat()) {
+            this.x = x;
+            this.y = y;
         }
         repaint();
     }
+
+//    public void kasvataPintaAlaa() {
+//        if (ovalHeight <= this.getHeight() - 2 && ovalWidth <= this.getWidth() - 2) {
+//            ovalWidth += 1;
+//            ovalHeight += 1;
+//        } else {
+//            ovalWidth = this.getWidth() - 1;
+//            ovalHeight = this.getHeight() - 1;
+//        }
+//        repaint();
+//    }
 //Testilisäys
 
-    public void pienennnaPintaAlaa() {
-        if (ovalHeight >= 2 && ovalWidth >= 2) {
-            ovalWidth -= 1;
-            ovalHeight -= 1;
-        } else {
-            ovalWidth = 1;
-            ovalHeight = 1;
-        }
-        repaint();
-    }
+//    public void pienennnaPintaAlaa() {
+//        if (ovalHeight >= 2 && ovalWidth >= 2) {
+//            ovalWidth -= 1;
+//            ovalHeight -= 1;
+//        } else {
+//            ovalWidth = 1;
+//            ovalHeight = 1;
+//        }
+//        repaint();
+//    }
 
-    public void siirraPalikoita(int vasenY,int oikeaY) {
+    public void siirraPalikoita(int vasenY, int oikeaY) {
+           if (tarkistaRajat()) {
+               
+        }
+  
         oikeaPalikkaY = oikeaY;
         vasenPalikkaY = vasenY;
         repaint();

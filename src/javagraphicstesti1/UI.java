@@ -15,17 +15,17 @@ import java.awt.event.*;
 public class UI extends JFrame {
 
     private Naytto naytto;
-    private PalloSaie saie = null;
+    private PalikkaSaie saie = null;
 
     public UI() {
         naytto = new Naytto();
         naytto.addMouseListener(new HiiriKuuntelija());
-        
+
         addKeyListener(new LiikeTunnistin());
         //Asetetaan ohjelma keskelle näyttöä käynnistettäessä
-        setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2), 
-                   ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
-        
+        setLocation(((int) Toolkit.getDefaultToolkit().getScreenSize().width / 2),
+                ((int) Toolkit.getDefaultToolkit().getScreenSize().height / 2));
+
         //Keskitetään paneeli
         add(naytto, BorderLayout.CENTER);
         //pakataan haluttuun kokoon näyttö
@@ -44,18 +44,26 @@ public class UI extends JFrame {
                 naytto.siirra(0, -3);
             } else if (keyCode == KeyEvent.VK_DOWN) {
                 naytto.siirra(0, 3);
-            }else if (keyCode == KeyEvent.VK_RIGHT) {
+            } else if (keyCode == KeyEvent.VK_RIGHT) {
                 naytto.siirra(3, 0);
             } else if (keyCode == KeyEvent.VK_LEFT) {
                 naytto.siirra(-3, 0);
-            } else if (keyCode == KeyEvent.VK_ENTER) {
+            }
+                    
+             //Käynnistetään/lopetetaan saie, tilasta riippuen
+            else if (keyCode == KeyEvent.VK_ENTER) {
                 if (saie == null) {
                     try {
-                        saie = new PalloSaie(naytto);
+                        saie = new PalikkaSaie(naytto);
                         saie.start();
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
+                } else if (saie != null) {
+                    saie.lopeta();
+                    saie = null;
                 }
-            } 
+            }
+            
         }
     }
 
@@ -63,10 +71,6 @@ public class UI extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (saie != null) {
-                saie.lopeta();
-            }
-            saie = null;
             naytto.uusiPaikka(e.getX(), e.getY());
         }
 

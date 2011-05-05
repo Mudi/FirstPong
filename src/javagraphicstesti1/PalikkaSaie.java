@@ -8,12 +8,12 @@ package javagraphicstesti1;
  *
  * @author Olli
  */
-public class PalloSaie extends Thread {
+public class PalikkaSaie extends Thread {
 
     private Naytto naytto = null;
     private volatile boolean kaynnissa = true;
 
-    public PalloSaie(Naytto naytto) {
+    public PalikkaSaie(Naytto naytto) {
         this.naytto = naytto;
     }
 
