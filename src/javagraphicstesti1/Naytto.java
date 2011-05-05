@@ -26,7 +26,8 @@ public class Naytto extends JPanel {
     public static void main(String[] args) {
         UI ui = new UI();
     }
-
+    
+    //Jos pallo osuu johonkin rajoista, palautetaan false
     public boolean tarkistaRajat() {
         //Seinien tarkastus
         if (this.x <= 0 || this.y <= 0 || this.x >= this.getWidth() || this.y >= this.getHeight()) {
